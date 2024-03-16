@@ -36,9 +36,17 @@ class HomeController extends Controller
     public function login()
     {
         $logged_id = Auth::user()->id;
+        $role_id = Auth::user()->role;
         if($logged_id > 0)
         {
-            return redirect(RouteServiceProvider::DASHBOARD);
+            if($role_id == 1)
+            {
+                return redirect(RouteServiceProvider::DASHBOARD);
+            }
+            elseif($role_id == 0)
+            {
+                return redirect(RouteServiceProvider::DASHBOARD);
+            }
         }
         else
         {

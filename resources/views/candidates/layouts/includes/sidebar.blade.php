@@ -1,5 +1,5 @@
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -20,7 +20,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item d-none">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -40,13 +40,19 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Job Posting</span>
+                    <span>Website Setups</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Job Posting :</h6>
-                        <a class="collapse-item" href="{{route('setting.header')}}">Jobs list</a>
+                        <h6 class="collapse-header">Website Setting :</h6>
+                        <a class="collapse-item" href="{{route('setting.header')}}">Header</a>
+                        <a class="collapse-item" href="{{route('setting.footer')}}">Footer</a>
+                        <a class="collapse-item" href="{{route('setting.appearance')}}">Appearance</a>
+                    </div>
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Website Pages :</h6>
+                        <a class="collapse-item" href="{{route('setting.pages')}}">Pages</a>
                     </div>
                 </div>
             </li>
@@ -60,7 +66,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <!-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
@@ -78,21 +84,21 @@
                         <a class="collapse-item" href="blank.html">Blank Page</a>
                     </div>
                 </div>
-            </li> -->
+            </li>
 
             <!-- Nav Item - Charts -->
-            <!-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
-            </li> -->
+            </li>
 
             <!-- Nav Item - Tables -->
-            <!-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
-            </li> -->
+            </li>
 
         </ul>
         <!-- End of Sidebar -->
