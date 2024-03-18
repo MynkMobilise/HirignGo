@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use App\Models\Admin\Job;
+use App\Models\User;
 
 class JobController extends Controller
 {
@@ -14,7 +18,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('admin/jobs/jobs-list');
+        $jobs = Job::all();
+        return view('admin/jobs/jobs-list',compact('jobs'));
     }
     
     /**
@@ -24,7 +29,9 @@ class JobController extends Controller
      */
     public function create()
     {
-        return view('admin/jobs/jobs-list');
+        $editJob['title'] = '';
+        $editJob['description'] = '';
+        return view('admin/jobs/post-job',compact('editJob'));
     }
 
     /**
@@ -35,7 +42,20 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input  = $request->all();
+
+        
+        $user_id = Auth::user()->id;
+        $model = new Job;
+        $model->employer_id = $user_id;
+        $model->title = $input['title'];
+        $model->description = $input['desc'];
+        $model->location = $input['loc'];
+        $model->requirements = $input['requirement'];
+        $model->salary = $input['sal'];
+        $model->posting_date = date('Y-m-d');
+        $model->save();
+        return view('admin/jobs/jobs-list');
     }
 
     /**
@@ -55,9 +75,10 @@ class JobController extends Controller
      * @param  \App\Models\Admin\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function edit(Job $job)
+    public function edit($id)
     {
-        //
+        $editJob = Job::find($id);
+        return view('admin/jobs/post-job',compact('editJob'));
     }
 
     /**

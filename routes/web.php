@@ -26,19 +26,22 @@ Auth::routes();
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home.dashboard');
 Route::get('/users', [HomeController::class, 'user'])->name('users');
 
-Route::prefix('setting')->group(function () {
+Route::middleware(['auth', 'api'])->prefix('setting')->group(function () {
     Route::get('header', [HomeController::class, 'header'])->name('setting.header');
     Route::get('footer', [HomeController::class, 'footer'])->name('setting.footer');
     Route::get('appearance', [HomeController::class, 'appearance'])->name('setting.appearance');
     Route::get('pages', [HomeController::class, 'pages'])->name('setting.pages');
 });
 
-Route::prefix('jobs')->group(function () {
+Route::middleware(['auth', 'api'])->prefix('jobs')->group(function () {
     Route::get('jobs-list', [JobController::class, 'index'])->name('jobs.jobs-list');
     Route::get('post-job', [JobController::class, 'create'])->name('jobs.post-job');
+    Route::get('edit-job/{id}', [JobController::class, 'edit'])->name('jobs.edit-job');
+    Route::post('add-job', [JobController::class, 'store'])->name('jobs.add-job');
+    Route::get('delete-job/{id}', [JobController::class, 'delete'])->name('jobs.delete-job');
 });
 
-Route::prefix('user')->group(function () {
+Route::middleware(['auth', 'api'])->prefix('user')->group(function () {
     Route::get('candidates', [UserController::class, 'index'])->name('user.candidates');
     Route::get('candidates-applied', [UserController::class, 'create'])->name('user.candidates-applied');
 });
