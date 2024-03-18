@@ -16,7 +16,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Customers
+                Jobs Posting
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -45,8 +45,8 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Job Posting :</h6>
-                        <a class="collapse-item" href="{{route('setting.header')}}">Jobs list</a>
+                        <a class="collapse-item" href="{{route('jobs.jobs-list')}}">Jobs list</a>
+                        <a class="collapse-item" href="{{route('jobs.post-job')}}">Post New Job</a>
                     </div>
                 </div>
             </li>
@@ -56,29 +56,23 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Candidates
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <!-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Canditates</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <a class="collapse-item" href="{{route('user.candidates')}}">Candiates List</a>
+                        <a class="collapse-item" href="{{route('user.candidates-applied')}}">Applied Candiates List</a>
                     </div>
                 </div>
-            </li> -->
+            </li>
 
             <!-- Nav Item - Charts -->
             <!-- <li class="nav-item">

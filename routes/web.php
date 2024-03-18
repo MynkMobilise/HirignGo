@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +31,14 @@ Route::prefix('setting')->group(function () {
     Route::get('footer', [HomeController::class, 'footer'])->name('setting.footer');
     Route::get('appearance', [HomeController::class, 'appearance'])->name('setting.appearance');
     Route::get('pages', [HomeController::class, 'pages'])->name('setting.pages');
+});
+
+Route::prefix('jobs')->group(function () {
+    Route::get('jobs-list', [JobController::class, 'index'])->name('jobs.jobs-list');
+    Route::get('post-job', [JobController::class, 'create'])->name('jobs.post-job');
+});
+
+Route::prefix('user')->group(function () {
+    Route::get('candidates', [UserController::class, 'index'])->name('user.candidates');
+    Route::get('candidates-applied', [UserController::class, 'create'])->name('user.candidates-applied');
 });

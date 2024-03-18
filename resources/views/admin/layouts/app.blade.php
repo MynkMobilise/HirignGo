@@ -43,7 +43,7 @@
                     @include('admin.layouts.includes.header')
                     <div class="d-flex">
                             @include('admin.layouts.includes.sidebar')
-                            <div class="py-3">
+                            <div class="py-3 w-100">
                                 @yield('content')
                             </div>
                     </div>

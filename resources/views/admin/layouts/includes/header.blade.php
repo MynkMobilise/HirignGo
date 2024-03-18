@@ -7,7 +7,7 @@
     </a>
 
     <a href="" class="nav-brand text-light fs-5 font-weight-bold mr-4">
-        Ecom Portal
+        HiringGo
     </a>
 
 
