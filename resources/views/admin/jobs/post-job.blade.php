@@ -19,35 +19,41 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="form-label font-weight-bold" for="title">Enter Job Title</label>
-                            <input type="text" id="title" value="{{$editJob->title}}" class="form-control" name="title" placeholder="Enter job title">
+                            <input type="text" id="title" value="{{$title}}" class="form-control" name="title" placeholder="Enter job title">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="form-label font-weight-bold" for="desc">Enter Job Description</label>
-                            <input type="text" id="desc" class="form-control" value="{{$editJob->description}}" name="desc" placeholder="Enter job description">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="form-label font-weight-bold" for="requirement">Requirement</label>
-                            <select name="requirement[]" class="form-control" id="requirement" multiple style="height:38px">
-                            @foreach($editJob->requirements as $list)
-                                <option value="{{$list}}">{{$list}}</option>
-                            @endforeach
-                            </select>
+                            <input type="text" id="desc" class="form-control" value="{{$description}}" name="desc" placeholder="Enter job description">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="form-label font-weight-bold" for="loc">Location</label>
-                            <input type="text" id="loc" class="form-control" value="{{$editJob->location}}" name="loc" placeholder="Enter job location">
+                            <input type="text" id="loc" class="form-control" value="{{$location}}" name="loc" placeholder="Enter job location">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="form-label font-weight-bold" for="sal">Salary</label>
-                            <input type="text" id="sal" class="form-control" value="{{$editJob->salary}}" name="sal" placeholder="Enter Salary">
+                            <input type="text" id="sal" class="form-control" value="{{$salary}}" name="sal" placeholder="Enter Salary">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label font-weight-bold" for="requirement">Requirement</label>
+                            <select name="requirement[]" class="form-control" id="requirement" multiple style="height:100px">
+                            @if($requirements == '')
+                                <option value="Social Media 100k Reach">Social Media 100k Reach</option>
+                                <option value="Social Media 200k Reach">Social Media 200k Reach</option>
+                                <option value="Social Media Brand">Social Media Brand</option>
+                            @else
+                            @foreach($requirements as $list)
+                                <option value="{{$list}}">{{$list}}</option>
+                            @endforeach
+                            @endif
+                            </select>
                         </div>
                     </div>
                 </div>

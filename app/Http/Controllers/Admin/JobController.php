@@ -29,9 +29,12 @@ class JobController extends Controller
      */
     public function create()
     {
-        $editJob['title'] = '';
-        $editJob['description'] = '';
-        return view('admin/jobs/post-job',compact('editJob'));
+        $result['title']= '';
+        $result['description']= '';
+        $result['requirements']= '';
+        $result['location']= '';
+        $result['salary']= '';
+        return view('admin/jobs/post-job',$result);
     }
 
     /**
@@ -77,8 +80,13 @@ class JobController extends Controller
      */
     public function edit($id)
     {
-        $editJob = Job::find($id);
-        return view('admin/jobs/post-job',compact('editJob'));
+        $arr = Job::where('id',1)->get();
+        $result['title']=$arr['0']->title;
+        $result['description']=$arr['0']->description;
+        $result['requirements']=$arr['0']->requirements;
+        $result['location']=$arr['0']->location;
+        $result['salary']=$arr['0']->salary;
+        return view('admin/jobs/post-job',$result);
     }
 
     /**
