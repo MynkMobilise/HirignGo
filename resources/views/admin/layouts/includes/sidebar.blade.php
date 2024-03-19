@@ -70,6 +70,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{route('user.candidates')}}">Candiates List</a>
                         <a class="collapse-item" href="{{route('user.candidates-applied')}}">Applied Candiates List</a>
+                        <a class="collapse-item" href="{{route('user.shortlisted-candidates')}}">Shortlisted Candiates List</a>
                     </div>
                 </div>
             </li>

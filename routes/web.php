@@ -43,5 +43,6 @@ Route::middleware(['auth', 'api'])->prefix('jobs')->group(function () {
 
 Route::middleware(['auth', 'api'])->prefix('user')->group(function () {
     Route::get('candidates', [UserController::class, 'index'])->name('user.candidates');
-    Route::get('candidates-applied', [UserController::class, 'create'])->name('user.candidates-applied');
+    Route::get('candidates-applied', [UserController::class, 'appliedCandList'])->name('user.candidates-applied');
+    Route::get('shortlisted-candidates', [UserController::class, 'shortlistedCandList'])->name('user.shortlisted-candidates');
 });
