@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view(RouteServiceProvider::AdminDashboard.'/dashboard');
+        $result['job_count'] = DB::table('jobs')->where('status',1)->count();
+        $result['user_count'] = DB::table('users')->where('role',0)->count();
+        $result['applied_count'] = DB::table('job_applications')->distinct('user_id')->count();
+        $result['shortlisted_count'] = DB::table('job_applications')->distinct('user_id')->where('is_shortlisted',1)->count();
+        return view(RouteServiceProvider::AdminDashboard.'/dashboard',$result);
     }
 
     public function user()
