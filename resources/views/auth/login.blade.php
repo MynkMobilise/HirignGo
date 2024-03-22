@@ -1,9 +1,3 @@
-@if(session('status'))
-<div>
-    jshfjdfljkdfldkfjlk
-</div>
-@endif
-
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>

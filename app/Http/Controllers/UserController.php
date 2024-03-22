@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -16,6 +17,12 @@ class UserController extends Controller
     {
         $candidates = User::select('name','email')->where('role',0)->get();
         return view('admin/users/candidates',compact('candidates'));
+    }
+
+    public function getBrand()
+    {
+        $brands = User::select('name','email')->where('role',1)->get();
+        return view('candidates/brand/brand',compact('brands'));
     }
     
     public function appliedCandList()
@@ -105,5 +112,26 @@ class UserController extends Controller
     public function destroy(Job $job)
     {
         //
+    }
+
+    public function myApplied()
+    {
+        $logged_id = Auth::user()->id;
+        $appliedCamps = DB::table('job_applications')->where('user_id',$logged_id)->get();
+        return view('candidates.appliedCampaings.appliedCamp',compact('appliedCamps'));
+    }
+
+    public function myProfile()
+    {
+        $logged_id = Auth::user()->id;
+        $userDet = user::find($logged_id);
+        return view('candidates.profile.profile',compact('userDet'));
+    }
+
+    public function brandProfile()
+    {
+        $logged_id = Auth::user()->id;
+        $userDet = user::find($logged_id);
+        return view('admin.profile.profile',compact('userDet'));
     }
 }

@@ -23,15 +23,19 @@ Route::get('/', [HomeController::class, 'login']);
 
 Auth::routes();
 
+Route::middleware(['auth', 'api'])->group(function () {
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home.dashboard');
+Route::get('user/dashboard', [HomeController::class, 'userDashboard'])->name('home.userDashboard');
 Route::get('/users', [HomeController::class, 'user'])->name('users');
-
-Route::middleware(['auth', 'api'])->prefix('setting')->group(function () {
-    Route::get('header', [HomeController::class, 'header'])->name('setting.header');
-    Route::get('footer', [HomeController::class, 'footer'])->name('setting.footer');
-    Route::get('appearance', [HomeController::class, 'appearance'])->name('setting.appearance');
-    Route::get('pages', [HomeController::class, 'pages'])->name('setting.pages');
+Route::get('/liveCamp', [HomeController::class, 'liveCamp'])->name('users');
 });
+
+// Route::middleware(['auth', 'api'])->prefix('setting')->group(function () {
+//     Route::get('header', [HomeController::class, 'header'])->name('setting.header');
+//     Route::get('footer', [HomeController::class, 'footer'])->name('setting.footer');
+//     Route::get('appearance', [HomeController::class, 'appearance'])->name('setting.appearance');
+//     Route::get('pages', [HomeController::class, 'pages'])->name('setting.pages');
+// });
 
 Route::middleware(['auth', 'api'])->prefix('jobs')->group(function () {
     Route::get('jobs-list', [JobController::class, 'index'])->name('jobs.jobs-list');
@@ -43,6 +47,15 @@ Route::middleware(['auth', 'api'])->prefix('jobs')->group(function () {
 
 Route::middleware(['auth', 'api'])->prefix('user')->group(function () {
     Route::get('candidates', [UserController::class, 'index'])->name('user.candidates');
+    Route::get('brands', [UserController::class, 'getBrand'])->name('user.brands');
+    Route::get('myprofile', [UserController::class, 'myProfile'])->name('user.myprofile');
+    Route::get('brandProfile', [UserController::class, 'brandProfile'])->name('user.brandProfile');
     Route::get('candidates-applied', [UserController::class, 'appliedCandList'])->name('user.candidates-applied');
     Route::get('shortlisted-candidates', [UserController::class, 'shortlistedCandList'])->name('user.shortlisted-candidates');
+});
+
+//Users Routes
+
+Route::middleware(['auth', 'api'])->prefix('campaigns')->group(function () {
+    Route::get('my-applied', [UserController::class, 'myApplied'])->name('user.myApplied');
 });

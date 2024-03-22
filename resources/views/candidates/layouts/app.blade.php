@@ -40,14 +40,14 @@
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Main Content -->
                 <div id="content">
-                    @include('admin.layouts.includes.header')
+                    @include('candidates.layouts.includes.header')
                     <div class="d-flex">
-                            @include('admin.layouts.includes.sidebar')
-                            <div class="py-3">
+                            @include('candidates.layouts.includes.sidebar')
+                            <div class="py-3 w-100">
                                 @yield('content')
                             </div>
                     </div>
-                    @include('admin.layouts.includes.footer')
+                    @include('candidates.layouts.includes.footer')
                 </div>
             </div>
         </div>

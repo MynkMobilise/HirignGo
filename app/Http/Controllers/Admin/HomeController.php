@@ -33,6 +33,14 @@ class HomeController extends Controller
         return view(RouteServiceProvider::AdminDashboard.'/dashboard',$result);
     }
 
+    public function userDashboard()
+    {
+        $liveCamps = DB::table('jobs')->where('status',0)->get();
+        return view(RouteServiceProvider::CandDashboard.'/dashboard',compact('liveCamps'));
+    }
+
+
+
     public function user()
     {
         return view(RouteServiceProvider::AdminUser.'/users');
@@ -50,7 +58,7 @@ class HomeController extends Controller
             }
             elseif($role_id == 0)
             {
-                return redirect(RouteServiceProvider::DASHBOARD);
+                return redirect(RouteServiceProvider::UserDashboard);
             }
         }
         else
@@ -58,4 +66,5 @@ class HomeController extends Controller
         return view('admin.auth.login');
         }
     }
+
 }
