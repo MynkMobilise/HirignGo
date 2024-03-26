@@ -101,7 +101,8 @@ class JobController extends Controller
 
         DB::insert($data);
 
-        return redirect()->back();
+        $liveCamps = Job::where('status',0)->get();
+        return view(RouteServiceProvider::CandDashboard.'/dashboard',compact('liveCamps'));
 
     }
 
