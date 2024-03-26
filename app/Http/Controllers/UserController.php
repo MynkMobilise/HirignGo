@@ -117,7 +117,7 @@ class UserController extends Controller
     public function myApplied()
     {
         $logged_id = Auth::user()->id;
-        $appliedCamps = DB::table('job_applications')->where('user_id',$logged_id)->get();
+        $appliedCamps = DB::table('job_applications as ja')->leftJoin('jobs as jb','ja.job_id','jb.id')->where('user_id',$logged_id)->get();
         return view('candidates.appliedCampaings.appliedCamp',compact('appliedCamps'));
     }
 
