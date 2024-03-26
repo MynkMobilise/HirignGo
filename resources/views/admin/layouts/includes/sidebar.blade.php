@@ -16,7 +16,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Jobs Posting
+                Campaigns Posting
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -40,13 +40,13 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Job Posting</span>
+                    <span>Campaign Posting</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{route('jobs.jobs-list')}}">Jobs list</a>
-                        <a class="collapse-item" href="{{route('jobs.post-job')}}">Post New Job</a>
+                        <a class="collapse-item" href="{{route('jobs.jobs-list')}}">Campaigns list</a>
+                        <a class="collapse-item" href="{{route('jobs.post-job')}}">Post New Campaign</a>
                     </div>
                 </div>
             </li>

@@ -10,9 +10,9 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
-            <h3 class="m-0 font-weight-bold text-primary">Job List</h3>
+            <h3 class="m-0 font-weight-bold text-primary">Campaign List</h3>
             <a href="{{route('jobs.post-job')}}" class="d-none d-sm-inline-block ml-auto btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-plus fa-sm text-white-50"></i> Post New Job</a>
+                    class="fas fa-plus fa-sm text-white-50"></i> Post New Campaign</a>
         </div>
         <div class="card-body">
             <div class="row">

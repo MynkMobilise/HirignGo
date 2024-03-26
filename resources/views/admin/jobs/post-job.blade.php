@@ -10,7 +10,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
-            <h3 class="m-0 font-weight-bold text-primary">Add Job Post Form</h3>
+            <h3 class="m-0 font-weight-bold text-primary">Add Campaign Form</h3>
         </div>
         <div class="card-body">
             <form action="{{route('jobs.add-job')}}" method="POST">
@@ -18,13 +18,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="form-label font-weight-bold" for="title">Enter Job Title</label>
+                            <label class="form-label font-weight-bold" for="title">Enter Campaign Title</label>
                             <input type="text" id="title" value="{{$title}}" class="form-control" name="title" placeholder="Enter job title">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="form-label font-weight-bold" for="desc">Enter Job Description</label>
+                            <label class="form-label font-weight-bold" for="desc">Enter Campaign Description</label>
                             <input type="text" id="desc" class="form-control" value="{{$description}}" name="desc" placeholder="Enter job description">
                         </div>
                     </div>
