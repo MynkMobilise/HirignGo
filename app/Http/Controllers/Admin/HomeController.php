@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $logged_id = Auth::user()->id;
-        $result['job_count'] = DB::table('jobs')->where('status',1)->where('user_id',$logged_id)->count();
+        $result['job_count'] = DB::table('jobs')->where('status',1)->count();
         $result['user_count'] = DB::table('users')->where('role',0)->count();
         $result['applied_count'] = DB::table('job_applications')->distinct('user_id')->count();
         $result['shortlisted_count'] = DB::table('job_applications')->distinct('user_id')->where('is_shortlisted',1)->count();
