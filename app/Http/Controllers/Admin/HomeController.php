@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use App\Models\Admin\Job;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -35,7 +36,28 @@ class HomeController extends Controller
 
     public function userDashboard()
     {
-        $liveCamps = DB::table('jobs')->where('status',0)->get();
+        $logged_id = Auth::user()->id;
+        $liveCamps = Job::where('status',0)->get();
+        // $appply_camps = DB::table('job_applications')->where('user_id',$logged_id)->get();
+        // $appply_camps = DB::table('job_applications')->get();
+
+        // return $appply_camps;
+
+        // foreach($liveCamps as $key=>$list)
+        // {
+        //     foreach($appply_camps as $data)
+        //     {
+        //         if($list->id == $data->job_id)
+        //         {
+        //             $liveCamps[$key]->applied = 1;
+        //         }
+        //         else
+        //         {
+        //             $liveCamps[$key]->applied = 0;
+        //         }
+        //     }
+        // }
+        // return $liveCamps;
         return view(RouteServiceProvider::CandDashboard.'/dashboard',compact('liveCamps'));
     }
 

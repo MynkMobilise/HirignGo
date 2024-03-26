@@ -43,6 +43,7 @@ Route::middleware(['auth', 'api'])->prefix('jobs')->group(function () {
     Route::get('edit-job/{id}', [JobController::class, 'edit'])->name('jobs.edit-job');
     Route::post('add-job', [JobController::class, 'store'])->name('jobs.add-job');
     Route::get('delete-job/{id}', [JobController::class, 'delete'])->name('jobs.delete-job');
+    Route::get('apply/{id}', [JobController::class, 'apply'])->name('jobs.apply');
 });
 
 Route::middleware(['auth', 'api'])->prefix('user')->group(function () {
@@ -52,6 +53,7 @@ Route::middleware(['auth', 'api'])->prefix('user')->group(function () {
     Route::get('brandProfile', [UserController::class, 'brandProfile'])->name('user.brandProfile');
     Route::get('candidates-applied', [UserController::class, 'appliedCandList'])->name('user.candidates-applied');
     Route::get('shortlisted-candidates', [UserController::class, 'shortlistedCandList'])->name('user.shortlisted-candidates');
+    Route::post('update-brand-profile', [UserController::class, 'updateBrandProfile'])->name('user.updateBrandProfile');
 });
 
 //Users Routes

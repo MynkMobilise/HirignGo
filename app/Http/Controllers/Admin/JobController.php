@@ -18,7 +18,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::all();
+        $logged_id = Auth::user()->id;
+        $jobs = Job::where('employer_id',$logged_id)->get();
         return view('admin/jobs/jobs-list',compact('jobs'));
     }
     
@@ -58,7 +59,9 @@ class JobController extends Controller
         $model->salary = $input['sal'];
         $model->posting_date = date('Y-m-d');
         $model->save();
-        return view('admin/jobs/jobs-list');
+        // return redirect('route("jobs.jobs-list")');
+        return redirect()->route('jobs.jobs-list');
+        // return redirect()->back();
     }
 
     /**
@@ -80,13 +83,25 @@ class JobController extends Controller
      */
     public function edit($id)
     {
-        $arr = Job::where('id',1)->get();
+        $arr = Job::where('id',$id)->get();
         $result['title']=$arr['0']->title;
         $result['description']=$arr['0']->description;
         $result['requirements']=$arr['0']->requirements;
         $result['location']=$arr['0']->location;
         $result['salary']=$arr['0']->salary;
         return view('admin/jobs/post-job',$result);
+    }
+
+    public function apply($id)
+    {
+        $logged_id = Auth::user()->id;
+        $data['user_id'] = $logged_id;
+        $data['job_id'] = $id;
+
+        DB::insert($data);
+
+        return redirect()->back();
+
     }
 
     /**

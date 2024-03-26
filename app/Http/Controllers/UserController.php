@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $candidates = User::select('name','email')->where('role',0)->get();
+        $candidates = User::select('*')->where('role',0)->get();
         return view('admin/users/candidates',compact('candidates'));
     }
 
@@ -133,5 +133,34 @@ class UserController extends Controller
         $logged_id = Auth::user()->id;
         $userDet = user::find($logged_id);
         return view('admin.profile.profile',compact('userDet'));
+    }
+
+    public function updateBrandProfile(Request $request)
+    {
+        $logged_id = Auth::user()->id;
+        $input = $request->all();
+        $model = user::find($logged_id);
+        $model->name = $input['name'];
+        $model->email = $input['email'];
+        $model->phone = $input['phone'];
+        $model->insta_link = $input['insta_link'];
+        $model->ytube_link = $input['ytube_link'];
+        
+        // Validate the uploaded file
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the validation rules as per your requirements
+        ]);
+        
+        // Get the uploaded file
+        $image = $request->file('image');
+        
+        // Generate a unique name for the file
+        $imageName = time() . '-' . $image->getClientOriginalName();
+        $model->image = $imageName;
+        $model->save();
+        // Move the uploaded file to the storage path
+        $image->move(public_path('uploads/users'), $imageName);
+
+        return back()->with('success', 'Image uploaded successfully.');
     }
 }

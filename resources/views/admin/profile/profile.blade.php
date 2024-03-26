@@ -1,4 +1,4 @@
-@extends('candidates.layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <!-- Begin Page Content -->
@@ -13,7 +13,7 @@
             <h3 class="m-0 font-weight-bold text-primary">My Profile</h3>
         </div>
         <div class="card-body">
-            <form action="">
+            <form action="{{route('user.updateBrandProfile')}}" method="post"  enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-4">
@@ -31,7 +31,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="form-label font-weight-bold" for="email">Uplaod Image</label>
-                            <input type="file" id="email" value="{{$userDet->email}}" class="form-control" name="profile_img" placeholder="Name">
+                            <input type="file" id="email" value="{{$userDet->image}}" class="form-control" name="image" placeholder="Name">
                         </div>
                     </div>
                     <div class="col-md-4">
