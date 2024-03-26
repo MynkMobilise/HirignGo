@@ -99,7 +99,8 @@ class JobController extends Controller
         $data['user_id'] = $logged_id;
         $data['job_id'] = $id;
 
-        DB::insert($data);
+        // DB::insert($data);
+        DB::table('job_applications')->insert($data);
 
         $liveCamps = Job::where('status',0)->get();
         return view(RouteServiceProvider::CandDashboard.'/dashboard',compact('liveCamps'));
